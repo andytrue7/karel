@@ -7,25 +7,31 @@ public class Assignment1Part2 extends SuperKarel {
 
     @Override
     public void run() throws Exception {
-        putBeeperIfNoPresent();
         while(facingEast()) {
-            if (leftIsClear()) {
-                turnLeft();
+            processColumn();
+            moveToNextColumn();
+        }
+    }
 
-                putBeeperWhileClear();
-                turnAroundIfBlocked();
+    private void processColumn() throws Exception {
+        putBeeperIfNoPresent();
 
-                while (frontIsClear()) {
-                    move();
-                }
-                turnLeft();
-            }
+        if (leftIsClear()) {
+            turnLeft();
 
-            if (frontIsClear()) {
-                moveMultipleTimes(4);
-            } else {
-                turnAround();
-            }
+            moveWhileClear();
+            turnAroundIfBlocked();
+
+            moveWhileClear();
+            turnLeft();
+        }
+    }
+
+    private void moveToNextColumn() throws Exception {
+        if (frontIsClear()) {
+            moveMultipleTimes(4);
+        } else {
+            turnAround();
         }
     }
 
@@ -35,8 +41,7 @@ public class Assignment1Part2 extends SuperKarel {
         }
     }
 
-    private void putBeeperWhileClear() throws Exception {
-        putBeeperIfNoPresent();
+    private void moveWhileClear() throws Exception {
         while(frontIsClear()) {
             move();
             putBeeperIfNoPresent();
