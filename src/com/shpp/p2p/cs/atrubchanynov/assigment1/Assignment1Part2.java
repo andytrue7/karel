@@ -19,10 +19,10 @@ public class Assignment1Part2 extends SuperKarel {
         if (leftIsClear()) {
             turnLeft();
 
-            moveWhileClear();
+            fillColumn();
             turnAroundIfBlocked();
 
-            moveWhileClear();
+            fillColumn();
             turnLeft();
         }
     }
@@ -41,7 +41,7 @@ public class Assignment1Part2 extends SuperKarel {
         }
     }
 
-    private void moveWhileClear() throws Exception {
+    private void fillColumn() throws Exception {
         while(frontIsClear()) {
             move();
             putBeeperIfNoPresent();

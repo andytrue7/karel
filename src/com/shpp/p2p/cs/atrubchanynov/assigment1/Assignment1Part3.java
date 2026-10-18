@@ -14,7 +14,7 @@ public class Assignment1Part3 extends SuperKarel {
         while (beepersPresent()) {
             pickBeeperIfRowEdge();
             move();
-            pickBeeperIfNoPresent();
+            pickEdgeBeeper();
             putBeeperIfNotPresent();
         }
     }
@@ -35,7 +35,7 @@ public class Assignment1Part3 extends SuperKarel {
         }
     }
 
-    private void pickBeeperIfNoPresent() throws Exception {
+    private void pickEdgeBeeper() throws Exception {
         if (noBeepersPresent()) {
             turnAround();
             move();

@@ -49,6 +49,7 @@ public class Assignment1Part4 extends SuperKarel {
         }
     }
 
+    // handle the case when the row has odd number of cells
     private void shiftToNextRowAtEastWall() throws Exception {
         if (frontIsBlocked() && beepersPresent() && facingEast() && leftIsClear()) {
             turnLeft();
