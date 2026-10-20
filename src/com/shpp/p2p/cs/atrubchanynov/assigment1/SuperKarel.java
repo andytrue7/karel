@@ -9,11 +9,20 @@ public class SuperKarel extends KarelTheRobot {
         turnLeft();
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     protected void turnAround() throws Exception {
         turnLeft();
         turnLeft();
     }
 
+    /**
+     *
+     * @param times
+     * @throws Exception
+     */
     protected void moveMultipleTimes(int times) throws Exception {
         for (int i = 0; i < times; i++) {
             if (frontIsClear()) {
@@ -21,6 +30,16 @@ public class SuperKarel extends KarelTheRobot {
             } else {
                 turnAround();
             }
+        }
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    protected void putBeeperIfNoPresent() throws Exception {
+        if (noBeepersPresent()) {
+            putBeeper();
         }
     }
 }

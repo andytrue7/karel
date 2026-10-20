@@ -13,6 +13,10 @@ public class Assignment1Part2 extends SuperKarel {
         }
     }
 
+    /**
+     * Put beepers moving to the wall, then turns back to the init row
+     * @throws Exception
+     */
     private void processColumn() throws Exception {
         putBeeperIfNoPresent();
 
@@ -27,6 +31,10 @@ public class Assignment1Part2 extends SuperKarel {
         }
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     private void moveToNextColumn() throws Exception {
         if (frontIsClear()) {
             moveMultipleTimes(4);
@@ -35,22 +43,24 @@ public class Assignment1Part2 extends SuperKarel {
         }
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     private void turnAroundIfBlocked() throws Exception {
         if (frontIsBlocked()) {
             turnAround();
         }
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     private void fillColumn() throws Exception {
         while(frontIsClear()) {
             move();
             putBeeperIfNoPresent();
-        }
-    }
-
-    public void putBeeperIfNoPresent() throws Exception {
-        if (noBeepersPresent()) {
-            putBeeper();
         }
     }
 }

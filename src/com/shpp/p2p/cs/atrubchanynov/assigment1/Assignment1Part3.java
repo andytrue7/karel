@@ -10,15 +10,23 @@ public class Assignment1Part3 extends SuperKarel {
         process();
     }
 
+    /**
+     * Implement the middle search algorithm
+     * @throws Exception
+     */
     private void process() throws Exception {
         while (beepersPresent()) {
-            pickBeeperIfRowEdge();
+            pickBeeperAtRowEdge();
             move();
-            pickEdgeBeeper();
+            pickOutermostBeeper();
             putBeeperIfNotPresent();
         }
     }
 
+    /**
+     * Put the beeper at the middle when all collected
+     * @throws Exception
+     */
     private void putBeeperIfNotPresent() throws Exception {
         if (noBeepersPresent()) {
             turnAround();
@@ -28,14 +36,22 @@ public class Assignment1Part3 extends SuperKarel {
         }
     }
 
-    private void pickBeeperIfRowEdge() throws Exception {
+    /**
+     *
+     * @throws Exception
+     */
+    private void pickBeeperAtRowEdge() throws Exception {
         if (frontIsBlocked()) {
             turnAround();
             pickBeeper();
         }
     }
 
-    private void pickEdgeBeeper() throws Exception {
+    /**
+     *
+     * @throws Exception
+     */
+    private void pickOutermostBeeper() throws Exception {
         if (noBeepersPresent()) {
             turnAround();
             move();
@@ -44,13 +60,15 @@ public class Assignment1Part3 extends SuperKarel {
         }
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     private void fillTheRowWithBeepers() throws Exception {
         putBeeper();
         while (frontIsClear()) {
             move();
-            if (noBeepersPresent()) {
-                putBeeper();
-            }
+            putBeeperIfNoPresent();
         }
     }
 }

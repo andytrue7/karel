@@ -4,18 +4,21 @@ package com.shpp.p2p.cs.atrubchanynov.assigment1;
 public class Assignment1Part4 extends SuperKarel {
     @Override
     public void run() throws Exception {
-        turnNorthAtEastWall();
+        turnNorthAtWall();
         fillChessBoard();
     }
 
+    /**
+     * fill the board with beepers
+     * @throws Exception
+     */
     private void fillChessBoard() throws Exception {
         putBeeper();
 
         while (frontIsClear()) {
             move();
 
-            turnNorthAtEastWall();
-            turnNorthAtWestWall();
+            turnNorthAtWall();
 
             if (frontIsClear()) {
                 move();
@@ -27,18 +30,24 @@ public class Assignment1Part4 extends SuperKarel {
         }
     }
 
-    private void turnNorthAtEastWall() throws Exception {
+    /**
+     * Turn north when reached wall edge
+     * @throws Exception
+     */
+    private void turnNorthAtWall() throws Exception {
         if (frontIsBlocked() && leftIsClear() && facingEast()) {
             turnLeft();
         }
-    }
 
-    private void turnNorthAtWestWall() throws Exception {
         if (frontIsBlocked() && rightIsClear() && facingWest()) {
             turnRight();
         }
     }
 
+    /**
+     * Turn to the available side facing north
+     * @throws Exception
+     */
     private void turnIntoNextRow() throws Exception {
         if (facingNorth() && leftIsClear()) {
             turnLeft();
@@ -49,7 +58,10 @@ public class Assignment1Part4 extends SuperKarel {
         }
     }
 
-    // handle the case when the row has odd number of cells
+    /**
+     * Move to the next row when the row has odd number of cells
+     * @throws Exception
+     */
     private void shiftToNextRowAtEastWall() throws Exception {
         if (frontIsBlocked() && beepersPresent() && facingEast() && leftIsClear()) {
             turnLeft();
