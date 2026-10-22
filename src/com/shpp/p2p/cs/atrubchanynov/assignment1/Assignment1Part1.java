@@ -26,12 +26,6 @@ public class Assignment1Part1 extends SuperKarel {
         returnToBottom();
     }
 
-    private void returnToBottom() throws Exception {
-        turnAround();
-        moveWhileClear();
-        turnLeft();
-    }
-
     /**
      * Columns are 4 apart (task guarantee)
      */

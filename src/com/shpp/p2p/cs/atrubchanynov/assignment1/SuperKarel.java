@@ -35,4 +35,10 @@ public class SuperKarel extends KarelTheRobot {
             move();
         }
     }
+
+    protected void returnToBottom() throws Exception {
+        turnAround();
+        moveWhileClear();
+        turnLeft();
+    }
 }
