@@ -29,4 +29,10 @@ public class SuperKarel extends KarelTheRobot {
             move();
         }
     }
+
+    protected void moveIfClear() throws Exception {
+        if (frontIsClear()) {
+            move();
+        }
+    }
 }

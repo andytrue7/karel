@@ -6,53 +6,32 @@ package com.shpp.p2p.cs.atrubchanynov.assignment1;
 public class Assignment1Part2 extends SuperKarel {
     @Override
     public void run() throws Exception {
+        layBeepersWithEmptyEnds();
+        removeBeepersFromBothEnds();
+        markMiddleCell();
+    }
+
+    /**
+     * The method puts beepers along the row except both ends
+     * Ends on the outermost beeper, facing the rest of the row
+     */
+    private void layBeepersWithEmptyEnds() throws Exception {
         fillTheRowWithBeepers();
-        process();
+        pickBeeper();
+        turnAround();
+
+        moveIfClear();
     }
 
     /**
-     * Implement the middle search algorithm
-     * @throws Exception
+     * * Removes the outermost beeper at each end, alternating sides.
+     * * The empty end cells keep Karel from walking into a wall.
+     * * Ends on the empty cell just past the last beeper removed.
      */
-    private void process() throws Exception {
+    private void removeBeepersFromBothEnds() throws Exception {
         while (beepersPresent()) {
-            pickBeeperAtRowEdge();
-            move();
-            pickOutermostBeeper();
-            putBeeperIfNotPresent();
-        }
-    }
+            walkPastBeepers();
 
-    /**
-     * Put the beeper at the middle when all collected
-     * @throws Exception
-     */
-    private void putBeeperIfNotPresent() throws Exception {
-        if (noBeepersPresent()) {
-            turnAround();
-            move();
-            putBeeper();
-            move();
-        }
-    }
-
-    /**
-     *
-     * @throws Exception
-     */
-    private void pickBeeperAtRowEdge() throws Exception {
-        if (frontIsBlocked()) {
-            turnAround();
-            pickBeeper();
-        }
-    }
-
-    /**
-     *
-     * @throws Exception
-     */
-    private void pickOutermostBeeper() throws Exception {
-        if (noBeepersPresent()) {
             turnAround();
             move();
             pickBeeper();
@@ -60,15 +39,28 @@ public class Assignment1Part2 extends SuperKarel {
         }
     }
 
+    private void markMiddleCell() throws Exception {
+        turnAround();
+        moveIfClear();
+        putBeeperIfNotPresent();
+    }
+
+    private void walkPastBeepers() throws Exception {
+        while (beepersPresent()) {
+            move();
+        }
+    }
+
     /**
-     *
-     * @throws Exception
+     * Puts beepers on every cell except the first.
+     * In a 1-cell world the only cell gets a beeper.
      */
     private void fillTheRowWithBeepers() throws Exception {
-        putBeeper();
         while (frontIsClear()) {
             move();
-            putBeeperIfNoPresent();
+            putBeeperIfNotPresent();
         }
+
+        putBeeperIfNotPresent();
     }
 }
