@@ -1,9 +1,9 @@
-package com.shpp.p2p.cs.atrubchanynov.assigment1;
+package com.shpp.p2p.cs.atrubchanynov.assignment1;
 
-import com.shpp.karel.KarelTheRobot;
-
-// MiddlePointFinding
-public class Assignment1Part3 extends SuperKarel {
+/**
+ * A class for the MiddlePointFinding
+ */
+public class Assignment1Part2 extends SuperKarel {
     @Override
     public void run() throws Exception {
         fillTheRowWithBeepers();
